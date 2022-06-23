@@ -3,14 +3,18 @@ import fetch from "node-fetch";
 async function getPhotographers() {
 
     fetch('./data/photographers.json')
-        .then(function (response) {
-            return response.blob();
-        })
-        .then(function (myBlob) {
-            const objectURL = URL.createObjectURL(myBlob);
-            myImage.src = objectURL;
-        });
+        // .then(function () {
+        //     return photographers;
+        // });
+        .then((response) => {
+            return response.json()
+          })
+          .then((data) => {
+            // Work with JSON data here
+            console.log(data)
+          })
 
+    console.log(data);
 
     // Penser à remplacer par les données récupérées dans le json
     const photographers = [
