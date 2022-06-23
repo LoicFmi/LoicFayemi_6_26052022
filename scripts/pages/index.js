@@ -2,18 +2,14 @@ import fetch from "node-fetch";
 
 async function getPhotographers() {
 
-    fetch('./data/photographers.json')
-        // .then(function () {
-        //     return photographers;
-        // });
-        .then((response) => {
-            return response.json()
-          })
-          .then((data) => {
-            // Work with JSON data here
-            console.log(data)
-          })
+    // const response = await fetch('./data/photographers.json');
+    // const data = await response.json();
 
+    fetch('./data/photographers.json')
+        .then(response => response.json())
+        // .then(data => console.log(data));
+        .then(photographers => console.log(photographers));
+          
     // console.log(data);
 
     // Penser à remplacer par les données récupérées dans le json
