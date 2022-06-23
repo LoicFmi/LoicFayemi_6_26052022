@@ -14,7 +14,7 @@ async function getPhotographers() {
             console.log(data)
           })
 
-    console.log(data);
+    // console.log(data);
 
     // Penser à remplacer par les données récupérées dans le json
     const photographers = [
