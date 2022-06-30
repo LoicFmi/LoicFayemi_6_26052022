@@ -5,9 +5,16 @@ async function getPhotographers() {
             return response.json();
         })
         .then(function (data) {
+            console.log(data);
             return data;
+        })
+        .catch(function(error){
+            console.error('Erreur fetch');
+            console.log(error);
         });
 
+    // let myData = data.photographers.name;
+    // console.log(myData);
 
     // Penser à remplacer par les données récupérées dans le json
     const photographers = [
@@ -30,11 +37,25 @@ async function getPhotographers() {
             "portrait": "account.png"
         },
     ]
+
+    // const photographers = [
+    //     {
+    //         "name": this._name,
+    //         "id": 1,
+    //         "city": "Paris",
+    //         "country": "France",
+    //         "tagline": "Ceci est ma data test",
+    //         "price": 400,
+    //         "portrait": "account.png"
+    //     },
+    // ]
+
     // et bien retourner le tableau photographers seulement une fois
     return ({
         photographers: [...photographers, ...photographers, ...photographers]
     })
-    
+
+    // return data.photographers;
 }
 
 async function displayData(photographers) {
