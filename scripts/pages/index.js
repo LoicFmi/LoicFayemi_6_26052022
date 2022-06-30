@@ -1,24 +1,14 @@
-import fetch from "node-fetch";
-
 async function getPhotographers() {
 
-    // const response = await fetch('./data/photographers.json');
-    // const data = await response.json();
-
-    // fetch('./data/photographers.json')
-    //     .then(response => response.json())
-    //     // .then(data => console.log(data));
-    //     .then(photographers => console.log(photographers));
-          
     fetch('../data/photographers.json')
-    .then(function(response) {
-        return response.json();
-    })
-    .then(function(data) {
-console.log(data);
-    });
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data);
+            return data;
+        });
 
-    // console.log(data);
 
     // Penser à remplacer par les données récupérées dans le json
     const photographers = [
@@ -45,6 +35,7 @@ console.log(data);
     return ({
         photographers: [...photographers, ...photographers, ...photographers]
     })
+    
 }
 
 async function displayData(photographers) {
