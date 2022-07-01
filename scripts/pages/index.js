@@ -13,26 +13,6 @@ async function getPhotographers() {
             console.error('Erreur fetch');
             console.log(error);
         });
-
-    // Penser à remplacer par les données récupérées dans le json
-    
-    // const photographers = [
-    //     {
-    //         "name": this._name,
-    //         "id": 1,
-    //         "city": "Paris",
-    //         "country": "France",
-    //         "tagline": "Ceci est ma data test",
-    //         "price": 400,
-    //         "portrait": "account.png"
-    //     },
-    // ]
-
-    // et bien retourner le tableau photographers seulement une fois
-    // return ({
-    //     photographers: [...photographers, ...photographers, ...photographers]
-    // })
-
 } 
 
 async function displayData(photographers) {
