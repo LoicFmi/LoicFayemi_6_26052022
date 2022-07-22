@@ -1,58 +1,67 @@
-export class MediaFactory {
-    constructor(type, data) {
-        // this.createMediatype = function (type) {
-        if (type === 'photo') {
+// class MediaFactory {
+//     constructor(type, data) {
+//         if (type === 'photo') {
+//             return new Photo(data)
+//         } else if (type === 'video') {
+//             return new Video(data)
+//         } else {
+//             throw 'Unknown type format'
+//         };
+//     }
+// }
+
+class MediaFactory {
+    constructor(data) {
+        if (data.hasOwnProperty('image')) {
             return new Photo(data)
-        } else if (type === 'video') {
+        } else if (data.hasOwnProperty('video')) {
             return new Video(data)
         } else {
             throw 'Unknown type format'
         };
     }
-    // }
 }
 
-// Séparer constructor et fonction
-export class Photo {
+class Photo {
     constructor(data) {
-        this._type = 'photo';
-        this._id = 'id';
-        this._photographerId = 'photographerId';
-        this._title = 'title';
-        this._image = 'image';
-        this._likes = 'likes';
-        this._date = 'date';
-        this._price = 'price';
+        this._type           = data.photo;
+        this._id             = data.id;
+        this._photographerId = data.photographerId;
+        this._title          = data.title;
+        this._image          = data.image;
+        this._likes          = data.likes;
+        this._date           = data.date;
+        this._price          = data.price;
     }
 
-    createPhoto (ArrayList, photographerItem) {
+    createMedia() {
         return `
             <article class='photographer-page-container'>
                 <a href="" class="photographer-page-media-link">
-                    <img id=${ArrayList.id} class="photographer-page-media" src='./images/${photographerItem.name.split(' ').slice(0, 1)}/${ArrayList.image}' alt=${ArrayList.alt}>
+                    <img id=${this._id} class="photographer-page-media" src='./images/${photographerItem.name.split(' ').slice(0, 1)}/${ArrayList.image}' alt=${ArrayList.alt}>
                     </img>
                 </a>
             </article>`;
     }
 }
 
-export class Video {
+class Video {
     constructor(data) {
-        this._type = 'video';
-        this._id = 'id';
-        this._photographerId = 'photographerId';
-        this._title = 'title';
-        this._video = 'video';
-        this._likes = 'likes';
-        this._date = 'date';
-        this._price = 'price';
+        this._type           = data.photo;
+        this._id             = data.id;
+        this._photographerId = data.photographerId;
+        this._title          = data.title;
+        this._video          = data.video;
+        this._likes          = data.likes;
+        this._date           = data.date;
+        this._price          = data.price;
     }
 
-    createVideo (ArrayList, photographerItem) {
+    createMedia() {
         return `
             <article class='photographer-page-container'>
                 <a href="" class="photographer-page-media-link">
-                <video id=${ArrayList.id} class='photographer-page-media'>
+                <video id=${this._id} class='photographer-page-media'>
                     <source src='./images/${photographerItem.name.split(' ').slice(0, 1)}/${ArrayList.video}' type="video/mp4">
                     Your browser does not support the video tag.
                 </video>

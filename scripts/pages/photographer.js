@@ -1,36 +1,37 @@
-async function getPhotographers() {
+// Récupérer id et média du photographer
+// Récupérer objet et les médias
+// Test en ficant un ID (let const id = 1)
+// Get param by ID/name
+
+async function getMedia() {
 
     return fetch('../data/photographers.json')
         .then(function (response) {
             return response.json();
         })
         .then(function (data) {
-            // console.log(data.photographers);
-            return data.photographers;
+            return data.media;
+            // return data;
         })
         .catch(function (error) {
             console.error('Erreur fetch');
             console.log(error);
         });
-}
+} 
 
-async function displayData(photographers) {
-    const photographHeader = document.querySelector(".photograph-header");
+async function displayMedia(medias) {
+    const photographMedia = document.querySelector(".photograph-media");
 
-    photographers.forEach((photographer) => {
-        const photographerModel = photographFactory(photographer);
-        const userCardDOM = photographerModel.getUserCardDOM();
-        photographHeader.appendChild(userCardDOM);
+    medias.forEach((media) => {
+        const mediaType = new MediaFactory(media);
+        photographMedia.appendChild(mediaType.createMedia());
     });
 };
 
 async function init() {
-    // Récupère les datas des photographes
-    const photographers = await getPhotographers();
-    displayData(photographers);
-    console.log(photographers)
+    // Récupère les medias du photographe
+    const medias = await getMedia();
+    displayMedia(medias);
+    console.log(medias)
 };
 init();
-
-
-// Media

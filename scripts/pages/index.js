@@ -5,7 +5,6 @@ async function getPhotographers() {
             return response.json();
         })
         .then(function (data) {
-            // console.log(data.photographers);
             return data.photographers;
         })
         .catch(function (error) {
