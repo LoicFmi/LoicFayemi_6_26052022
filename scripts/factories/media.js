@@ -1,15 +1,3 @@
-// class MediaFactory {
-//     constructor(type, data) {
-//         if (type === 'photo') {
-//             return new Photo(data)
-//         } else if (type === 'video') {
-//             return new Video(data)
-//         } else {
-//             throw 'Unknown type format'
-//         };
-//     }
-// }
-
 class MediaFactory {
     constructor(data) {
         if (data.hasOwnProperty('image')) {
@@ -24,7 +12,7 @@ class MediaFactory {
 
 class Photo {
     constructor(data) {
-        this._type           = data.photo;
+        this._type           = data.image;
         this._id             = data.id;
         this._photographerId = data.photographerId;
         this._title          = data.title;
@@ -32,22 +20,39 @@ class Photo {
         this._likes          = data.likes;
         this._date           = data.date;
         this._price          = data.price;
+        this._name           = data.name;
     }
 
+    // createMedia() {
+    //     return `
+    //         <article class='photographer-page-container'>
+    //             <a href="" class="photographer-page-media-link">
+    //                 <img id=${this._id} class="photographer-page-media" src='../assets/photographers/${photographerItem.name.split(' ').slice(0, 1)}/${ArrayList.image}' alt=${ArrayList.alt}>
+    //                 </img>
+    //             </a>
+    //         </article>`;
+    // }
+
     createMedia() {
+    //     return `
+    //         <article class='photographer-page-container'>
+    //             <a href="" class="photographer-page-media-link">
+    //                 <img id=${this._id} class="photographer-page-media" src='../assets/photographers/${this._name}/${this._image}' alt= ''>
+    //                 </img>
+    //             </a>
+    //         </article>`;
+    // }
         return `
-            <article class='photographer-page-container'>
-                <a href="" class="photographer-page-media-link">
-                    <img id=${this._id} class="photographer-page-media" src='./images/${photographerItem.name.split(' ').slice(0, 1)}/${ArrayList.image}' alt=${ArrayList.alt}>
+                <a href="" class="photograph-media-link">
+                    <img id=${this._id} class="photograph-media-content" src='../assets/photographers/Tracy Galindo/${this._image}' alt= ''>
                     </img>
-                </a>
-            </article>`;
+                </a>`;
     }
 }
 
 class Video {
     constructor(data) {
-        this._type           = data.photo;
+        this._type           = data.video;
         this._id             = data.id;
         this._photographerId = data.photographerId;
         this._title          = data.title;
@@ -55,17 +60,18 @@ class Video {
         this._likes          = data.likes;
         this._date           = data.date;
         this._price          = data.price;
+        this._name           = data.name;
     }
 
-    createMedia() {
-        return `
-            <article class='photographer-page-container'>
-                <a href="" class="photographer-page-media-link">
-                <video id=${this._id} class='photographer-page-media'>
-                    <source src='./images/${photographerItem.name.split(' ').slice(0, 1)}/${ArrayList.video}' type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                </a>
-            </article>`;
-    }
+    // createMedia() {
+    //     return `
+    //         <article class='photograph-media-container'>
+    //             <a href="" class="photograph-media-link">
+    //             <video id=${this._id} class='photograph-media-content'>
+    //                 <source src='./images/${photographerItem.name.split(' ').slice(0, 1)}/${ArrayList.video}' type="video/mp4">
+    //                 Your browser does not support the video tag.
+    //             </video>
+    //             </a>
+    //         </article>`;
+    // }
 }

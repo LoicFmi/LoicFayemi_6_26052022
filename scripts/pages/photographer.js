@@ -1,6 +1,6 @@
 // Récupérer id et média du photographer
 // Récupérer objet et les médias
-// Test en ficant un ID (let const id = 1)
+// Test en fixant un ID (let const id = 1)
 // Get param by ID/name
 
 async function getMedia() {
@@ -24,7 +24,10 @@ async function displayMedia(medias) {
 
     medias.forEach((media) => {
         const mediaType = new MediaFactory(media);
-        photographMedia.appendChild(mediaType.createMedia());
+        const image = document.createElement('article');
+        image.innerHTML = mediaType.createMedia();
+        // photographMedia.appendChild(mediaType.createMedia());
+        photographMedia.appendChild(image);
     });
 };
 
