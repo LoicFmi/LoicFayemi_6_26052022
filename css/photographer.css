@@ -40,25 +40,23 @@
 .photograph-media {
     display: flex;
     justify-content: space-around;
-    overflow: hidden;
+    flex-wrap:wrap;
 }
 
 .photograph-media article {
     width: 33%;
-    /* overflow: hidden; */
 }
 
 .photograph-media-link {
-    width: 33%;
+
 }
 
 .photograph-media-container {
-    /* width: 33%; */
+
 }
 
 .photograph-media-content {
-    /* width: 33%; */
-    object-fit: cover;
+    max-width: 100%;
 }
 
 .contact_button {
