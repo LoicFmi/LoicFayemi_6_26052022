@@ -1,8 +1,3 @@
-// Récupérer id et média du photographer
-// Récupérer objet et les médias
-// Test en fixant un ID (let const id = 1)
-// Get param by ID/name
-
 async function getMedia() {
 
     return fetch('../data/photographers.json')
@@ -11,7 +6,6 @@ async function getMedia() {
         })
         .then(function (data) {
             return data.media;
-            // return data;
         })
         .catch(function (error) {
             console.error('Erreur fetch');
@@ -41,7 +35,6 @@ async function displayMedia(medias, photographerName) {
         const mediaType = new MediaFactory(media, photographerName);
         const med = document.createElement('article');
         med.innerHTML = mediaType.createMedia();
-        // photographMedia.appendChild(mediaType.createMedia());
         photographMedia.appendChild(med);
     });
 };
