@@ -41,7 +41,6 @@ class Video {
         this._date = data.date;
         this._price = data.price;
         this._photographerName = photographerName
-
     }
 
     createMedia() {
@@ -52,5 +51,29 @@ class Video {
                     Your browser does not support the video tag.
                 </video>
                 </a>`;
+    }
+}
+
+class Photograph {
+    constructor(data) {
+        this._id = data.id;
+        this._name = data.name;
+        this._city = data.city;
+        this._country = data.country;
+        this._tagline = data.tagline;
+        this._portrait = data.portrait;
+    }
+
+    createInfos() {
+        return `<article>
+                <h2>${this._name}</h2>
+                <h3>${this._city}, ${this._country}</h3>
+                <h4>${this._tagline}</h4>
+                </article>`;
+    }
+
+    createPortrait() {
+        return `<img id this._id class="photograph-portrait" src='../assets/photographers/Photographers ID Photos/${this._portrait}'
+                </img>`;
     }
 }
