@@ -27,7 +27,11 @@ class Photo {
                 <a href="" class="photograph-media-link">
                     <img id=${this._id} class="photograph-media-content" src='../assets/photographers/${this._photographerName}/${this._image}' alt= ''>
                     </img>
-                </a>`;
+                </a>
+                <div class="photograpgh-media-infos">
+                    <p>${this._title}</p>
+                    <p>${this._likes} <i class="fas fa-heart"></i></p>
+                </div>`;
     }
 }
 
@@ -46,11 +50,15 @@ class Video {
     createMedia() {
         return `
                 <a href="" class="photograph-media-link">
-                <video id=${this._id} class='photograph-media-content'>
-                    <source src='../assets/photographers/${this._photographerName}/${this._video}' type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                </a>`;
+                    <video id=${this._id} class="photograph-media-content">
+                        <source src='../assets/photographers/${this._photographerName}/${this._video}' type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </a>
+                <div class="photograpgh-media-infos">
+                    <p>${this._title}</p>
+                    <p>${this._likes} <i class="fas fa-heart"></i></p>
+                </div>`;
     }
 }
 
@@ -61,19 +69,25 @@ class Photograph {
         this._city = data.city;
         this._country = data.country;
         this._tagline = data.tagline;
+        this._price = data.price;
         this._portrait = data.portrait;
     }
 
     createInfos() {
         return `<article>
-                <h2>${this._name}</h2>
-                <h3>${this._city}, ${this._country}</h3>
-                <h4>${this._tagline}</h4>
+                    <h2>${this._name}</h2>
+                    <h3>${this._city}, ${this._country}</h3>
+                    <h4>${this._tagline}</h4>
                 </article>`;
     }
 
     createPortrait() {
         return `<img id this._id class="photograph-portrait" src='../assets/photographers/Photographers ID Photos/${this._portrait}'
                 </img>`;
+    }
+
+    createBox() {
+        return `<p>297 081 <i class="fas fa-heart"></i></p>
+                <p> ${this._price}€ / jour</p>`;
     }
 }
