@@ -1,18 +1,4 @@
-async function getMedia() {
-
-    return fetch('../data/photographers.json')
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (data) {
-            return data.media;
-        })
-        .catch(function (error) {
-            console.error('Erreur fetch');
-            console.log(error);
-        });
-}
-
+// Récupération des infos du photographe
 async function getPhotographers() {
 
     return fetch('../data/photographers.json')
@@ -28,6 +14,33 @@ async function getPhotographers() {
         });
 }
 
+// Récupération des médias du photographe
+async function getMedia() {
+
+    return fetch('../data/photographers.json')
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            return data.media;
+        })
+        .catch(function (error) {
+            console.error('Erreur fetch');
+            console.log(error);
+        });
+}
+
+// Affichage des infos du photographe
+async function displayPhotograph(data) {
+    const photographInfos = document.querySelector(".photograph-infos");
+    const photographPortrait = document.querySelector(".photograph-portrait");
+
+    const portrait = new Photograph(data);
+    photographInfos.innerHTML = portrait.createInfos();
+    photographPortrait.innerHTML = portrait.createPortrait();
+}
+
+// Affichage des médias du photographe
 async function displayMedia(medias, photographerName) {
     const photographMedia = document.querySelector(".photograph-media");
 
@@ -39,17 +52,9 @@ async function displayMedia(medias, photographerName) {
     });
 };
 
-async function displayPhotograph(data) {
-    const photographInfos = document.querySelector(".photograph-infos");
-    const photographPortrait = document.querySelector(".photograph-portrait");
-
-    const portrait = new Photograph(data);
-    photographInfos.innerHTML = portrait.createInfos();
-    photographPortrait.innerHTML = portrait.createPortrait();
-}
-
+// Génère la page photographe
 async function init() {
-    // Récupération de l'id dans 'URL
+    // Récupération de l'id du photographe dans 'URL
     let url = window.location.href;
     const strs = url.split('=');
     const id = parseInt(strs.at(-1));
@@ -57,13 +62,18 @@ async function init() {
     // Récupère les infos du photographe
     const photographers = await getPhotographers();
     const photographer = photographers.find(photograph => photograph.id === id);
+
+    // Affiche les infos du photographe sur la page
     displayPhotograph(photographer);
 
+    // Récupère les images et vidéos du photographe
     const medias = await getMedia();
     const photographerMedias = medias.filter(media => media.photographerId === id);
+
+    // Affiche les médias du photographe sur la page
     displayMedia(photographerMedias, photographer.name);
-    console.log(photographerMedias);
-    console.log(photographer);
+    // console.log(photographerMedias);
+    // console.log(photographer);
 };
 
 init();
