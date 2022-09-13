@@ -1,6 +1,3 @@
-# Base de code du projet P6 - Parcours Front-end
+# OCP6 - Fisheye
 
-## Démarrer le projet
-
-Rien à installer ici, il suffit d'ouvrir le fichier `index.html`.
-
+6th Openclassrooms project : Create an accessible website for a platform of photographs
