@@ -94,7 +94,7 @@ main {
     display: flex;
     justify-content: space-around;
     position: fixed;
-    left: 70%;
+    left: 72%;
     bottom: -1%;
 }
 
@@ -114,6 +114,9 @@ main {
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
 }
 
 .modal {
