@@ -90,4 +90,8 @@ class Photograph {
         return `<p>297 081 <i class="fas fa-heart"></i></p>
                 <p> ${this._price}€ / jour</p>`;
     }
+
+    addNameToModal() {
+        return `${this._name}`
+    }
 }

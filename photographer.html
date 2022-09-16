@@ -24,7 +24,7 @@
     </div>
     <div class="photograph-sorting">
       <p>Trier par</p>
-      
+
     </div>
     <div class="photograph-media">
 
@@ -33,18 +33,35 @@
 
     </div>
   </main>
-  <div id="contact_modal">
+  <div id="contact-modal">
     <div class="modal">
-      <header>
-        <h2>Contactez-moi</h2>
-        <img src="assets/icons/close.svg" onclick="closeModal()" />
+      <header class="modal-header">
+        <div>
+          <h2>Contactez-moi</h2>
+          <img src="assets/icons/close.svg" onclick="closeModal()"/>
+        </div>
       </header>
       <form>
         <div>
           <label>Prénom</label>
-          <input />
+          <input 
+          type="text"/>
         </div>
-        <button class="contact_button">Envoyer</button>
+        <div>
+          <label>Nom</label>
+          <input
+          type="text"/>
+        </div>
+        <div>
+          <label>Email</label>
+          <input
+          type="email"/>
+        </div>
+        <div>
+          <label>Votre message</label>
+          <textarea class="text-box"></textarea>
+        </div>
+        <button class="send-button">Envoyer</button>
       </form>
     </div>
   </div>

@@ -34,10 +34,14 @@ async function getMedia() {
 async function displayPhotograph(data) {
     const photographInfos = document.querySelector(".photograph-infos");
     const photographPortrait = document.querySelector(".photograph-portrait");
-
+    const modalName = document.createElement('h2');
+    const modalHeader = document.querySelector(".modal-header");
     const header = new Photograph(data);
+
     photographInfos.innerHTML = header.createInfos();
     photographPortrait.innerHTML = header.createPortrait();
+    modalName.innerHTML = header.addNameToModal();
+    modalHeader.appendChild(modalName);
 }
 
 // Affichage des médias du photographe
@@ -55,8 +59,8 @@ async function displayMedia(medias, photographerName) {
 // Affichage de la box en bas de page
 async function displayBox(data) {
     const photographBox = document.querySelector(".photograph-box");
-
     const box = new Photograph(data);
+
     photographBox.innerHTML = box.createBox();
 }
 
