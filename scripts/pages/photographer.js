@@ -35,7 +35,7 @@ async function displayPhotograph(data) {
     const photographInfos = document.querySelector(".photograph-infos");
     const photographPortrait = document.querySelector(".photograph-portrait");
     const modalName = document.createElement('h2');
-    const modalHeader = document.querySelector(".modal-header");
+    const modalHeader = document.querySelector(".modal-name");
     const header = new Photograph(data);
 
     photographInfos.innerHTML = header.createInfos();

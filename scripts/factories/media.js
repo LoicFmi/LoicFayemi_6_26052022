@@ -25,7 +25,7 @@ class Photo {
     createMedia() {
         return `
                 <a href="" class="photograph-media-link">
-                    <img id=${this._id} class="photograph-media-content" src='../assets/photographers/${this._photographerName}/${this._image}' alt= ''>
+                    <img id=${this._id} class="photograph-media-content" src='../assets/photographers/${this._photographerName}/${this._image}' alt= '${this._title}'>
                     </img>
                 </a>
                 <div class="photograpgh-media-infos">
@@ -50,7 +50,7 @@ class Video {
     createMedia() {
         return `
                 <a href="" class="photograph-media-link">
-                    <video id=${this._id} class="photograph-media-content">
+                    <video id=${this._id} class="photograph-media-content" alt='${this._title}'>
                         <source src='../assets/photographers/${this._photographerName}/${this._video}' type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
@@ -82,7 +82,7 @@ class Photograph {
     }
 
     createPortrait() {
-        return `<img id this._id class="photograph-portrait" src='../assets/photographers/Photographers ID Photos/${this._portrait}'
+        return `<img id=${this._id} class="photograph-portrait" src='../assets/photographers/Photographers ID Photos/${this._portrait}' alt='${this._name}'
                 </img>`;
     }
 
