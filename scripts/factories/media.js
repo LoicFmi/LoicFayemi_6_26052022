@@ -1,3 +1,5 @@
+/* eslint-disable no-prototype-builtins */
+/* eslint-disable no-unused-vars */
 class MediaFactory {
     constructor(data, photographerName) {
         if (data.hasOwnProperty('image')) {
@@ -6,7 +8,7 @@ class MediaFactory {
             return new Video(data, photographerName)
         } else {
             throw 'Unknown type format'
-        };
+        }
     }
 }
 

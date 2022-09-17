@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 // Récupération des infos du photographe
 async function getPhotographers() {
 
@@ -54,7 +55,7 @@ async function displayMedia(medias, photographerName) {
         med.innerHTML = mediaType.createMedia();
         photographMedia.appendChild(med);
     });
-};
+}
 
 // Affichage de la box en bas de page
 async function displayBox(data) {
@@ -87,8 +88,6 @@ async function init() {
 
     // Affiche les médias du photographe sur la page
     displayMedia(photographerMedias, photographer.name);
-    // console.log(photographerMedias);
-    // console.log(photographer);
-};
+}
 
 init();

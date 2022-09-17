@@ -1,5 +1,26 @@
 {
   "dependencies": {
     "node-fetch": "^3.2.6"
-  }
+  },
+  "devDependencies": {
+    "eslint": "^8.23.1"
+  },
+  "name": "loicfayemi_6_26052022",
+  "description": "My 6th Openclassrooms project : Create an accessible site for a platform of photographers",
+  "version": "1.0.0",
+  "main": ".eslintrc.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LoicFmi/LoicFayemi_6_26052022.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LoicFmi/LoicFayemi_6_26052022/issues"
+  },
+  "homepage": "https://github.com/LoicFmi/LoicFayemi_6_26052022#readme"
 }

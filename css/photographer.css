@@ -70,10 +70,6 @@ main {
     min-width: 300px;
 }
 
-.photograph-media-link {
-
-}
-
 .photograpgh-media-infos {
     display: flex;
     justify-content: space-between;
