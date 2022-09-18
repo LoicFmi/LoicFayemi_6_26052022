@@ -26,7 +26,7 @@ class Photo {
 
     createMedia() {
         return `
-                <a href="" class="photograph-media-link">
+                <a class="photograph-media-link" onclick="displayLightbox()">
                     <img id=${this._id} class="photograph-media-content" src='../assets/photographers/${this._photographerName}/${this._image}' alt= '${this._title}'>
                     </img>
                 </a>
@@ -34,6 +34,12 @@ class Photo {
                     <p>${this._title}</p>
                     <p>${this._likes} <i class="fas fa-heart"></i></p>
                 </div>`;
+    }
+
+    displayMedia() {
+        return `
+        <img id=${this._id} class="photograph-media-content" src='../assets/photographers/${this._photographerName}/${this._image}' alt= '${this._title}'>
+                    </img>`
     }
 }
 
@@ -51,7 +57,7 @@ class Video {
 
     createMedia() {
         return `
-                <a href="" class="photograph-media-link">
+                <a class="photograph-media-link" onclick="displayLightbox()">
                     <video id=${this._id} class="photograph-media-content" alt='${this._title}'>
                         <source src='../assets/photographers/${this._photographerName}/${this._video}' type="video/mp4">
                         Your browser does not support the video tag.

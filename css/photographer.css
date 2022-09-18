@@ -1,15 +1,3 @@
-#contact-modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    overflow: auto;
-    background-color: #C4C4C466;
-}
-
 main {
     margin: 0 100px;
 }
@@ -54,7 +42,7 @@ main {
 .photograph-sorting {
     display: flex;
     font-weight: 700;
-    margin-bottom: 58px ;
+    margin-bottom: 58px;
 }
 
 .photograph-media {
@@ -68,6 +56,10 @@ main {
 .photograph-media article {
     width: 27%;
     min-width: 300px;
+}
+
+.photograph-media-link {
+    cursor: pointer;
 }
 
 .photograpgh-media-infos {
@@ -123,6 +115,19 @@ main {
     transform: translate(-50%);
 }
 
+#contact-modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: #C4C4C466;
+}
+
+
 .modal {
     border-radius: 5px;
     background-color: #DB8876;
@@ -136,7 +141,6 @@ main {
 }
 
 .modal header {
-    /* justify-content: space-between; */
     width: 100%;
     margin-bottom: 100px;
     flex-direction: column;
@@ -178,7 +182,8 @@ form div {
     margin-bottom: 26px;
 }
 
-form input, form textarea {
+form input,
+form textarea {
     width: 100%;
     height: 68px;
     border: none;
@@ -201,5 +206,57 @@ form textarea {
     border: none;
     background-color: #901C1C;
     border-radius: 5px;
+    cursor: pointer;
+}
+
+#lightbox-container {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: #C4C4C466;
+}
+
+.lightbox {
+    border-radius: 5px;
+    background-color: white;
+    width: 45%;
+    margin: 60px auto;
+}
+
+.media-swap {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.lightbox-media {
+    width: 75%;
+    height: 500px;
+    object-fit: cover;
+    padding: 20px 0;
+    margin-top: -50px;
+}
+
+.change-media {
+    color: #901C1C;
+    font-size: 40px;
+    /* margin: 0 20px; */
+    cursor: pointer;
+}
+
+.close-lightbox {
+    display: flex;
+    justify-content: flex-end;
+
+}
+
+.close-lightbox img {
+    margin-right: 20px;
+    margin-top: 25px;
     cursor: pointer;
 }

@@ -37,37 +37,48 @@
       <header class="modal-header">
         <div>
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()"/>
+          <img src="assets/icons/close.svg" alt="" onclick="closeModal()" />
         </div>
         <div class="modal-name">
-          
+
         </div>
       </header>
-      <form>
+      <form id="form">
         <div>
           <label>Prénom</label>
-          <input 
-          type="text"/>
+          <input type="text" class="firstname" />
         </div>
         <div>
           <label>Nom</label>
-          <input
-          type="text"/>
+          <input type="text" class="lastname" />
         </div>
         <div>
           <label>Email</label>
-          <input
-          type="email"/>
+          <input type="email" class="email" />
         </div>
         <div>
           <label>Votre message</label>
-          <textarea class="text-box"></textarea>
+          <textarea class="text-box msg"></textarea>
         </div>
-        <button class="send-button">Envoyer</button>
+        <button class="send-button" onclick="sendForm()">Envoyer</button>
       </form>
     </div>
   </div>
+  <div id="lightbox-container">
+    <div class="lightbox">
+      <div class="close-lightbox">
+        <img src="assets/icons/close_red.svg" alt="" onclick="closeLightbox()">
+      </div>
+      <div class="media-swap">
+        <i class="change-media fas fa-chevron-left"></i>
+        <!-- <img class="lightbox-media" src="assets/photographers/Mimi Keel/Animals_Rainbow.jpg" alt=""> -->
+        <span class="media-box"></span>
+        <i class="change-media fas fa-chevron-right"></i>
+      </div>
+    </div>
+  </div>
   <script src="scripts/utils/contactForm.js"></script>
+  <script src="scripts/utils/lightBox.js"></script>
   <script src="scripts/factories/profile.js"></script>
   <script src="scripts/factories/media.js"></script>
   <script src="scripts/pages/photographer.js"></script>
