@@ -193,7 +193,7 @@ form textarea {
 
 form textarea {
     height: 190px;
-    resize: none;
+    resize: vertical;
 }
 
 .send-button {
