@@ -17,7 +17,7 @@ class Photo {
         this._id = data.id;
         this._photographerId = data.photographerId;
         this._title = data.title;
-        this._image = data.image;
+        this._media = data.image;
         this._likes = data.likes;
         this._date = data.date;
         this._price = data.price;
@@ -26,8 +26,8 @@ class Photo {
 
     createMedia() {
         return `
-                <a class="photograph-media-link" onclick="displayLightbox()">
-                    <img id=${this._id} class="photograph-media-content" src='../assets/photographers/${this._photographerName}/${this._image}' alt= '${this._title}'>
+                <a class="photograph-media-link" onclick="displayLightbox(${this._id}, '${this._photographerName}', '${this._media}', '${this._title}')">
+                    <img id=${this._id} class="photograph-media-content" src='../assets/photographers/${this._photographerName}/${this._media}' alt= '${this._title}'>
                     </img>
                 </a>
                 <div class="photograpgh-media-infos">
@@ -36,11 +36,6 @@ class Photo {
                 </div>`;
     }
 
-    displayMedia() {
-        return `
-        <img id=${this._id} class="photograph-media-content" src='../assets/photographers/${this._photographerName}/${this._image}' alt= '${this._title}'>
-                    </img>`
-    }
 }
 
 class Video {
@@ -48,7 +43,7 @@ class Video {
         this._id = data.id;
         this._photographerId = data.photographerId;
         this._title = data.title;
-        this._video = data.video;
+        this._media = data.video;
         this._likes = data.likes;
         this._date = data.date;
         this._price = data.price;
@@ -57,9 +52,9 @@ class Video {
 
     createMedia() {
         return `
-                <a class="photograph-media-link" onclick="displayLightbox()">
+                <a class="photograph-media-link" onclick="displayLightbox(${this._id}, '${this._photographerName}', '${this._media}', '${this._title}')">
                     <video id=${this._id} class="photograph-media-content" alt='${this._title}'>
-                        <source src='../assets/photographers/${this._photographerName}/${this._video}' type="video/mp4">
+                        <source src='../assets/photographers/${this._photographerName}/${this._media}' type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                 </a>

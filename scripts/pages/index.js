@@ -1,4 +1,5 @@
 /* eslint-disable no-undef */
+// Récupération des infos du photographe
 async function getPhotographers() {
 
     return fetch('../data/photographers.json')
@@ -14,6 +15,7 @@ async function getPhotographers() {
         });
 } 
 
+// Affiche les photographes sur la page
 async function displayData(photographers) {
     const photographersSection = document.querySelector(".photographer_section");
 

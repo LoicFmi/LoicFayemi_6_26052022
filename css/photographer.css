@@ -36,7 +36,7 @@ main {
     object-fit: cover;
     height: 200px;
     width: 200px;
-    box-shadow: 0px 1px 5px grey;
+    box-shadow: 0px 1px 5px #C4C4C4;
 }
 
 .photograph-sorting {
@@ -226,6 +226,7 @@ form textarea {
     background-color: white;
     width: 45%;
     margin: 60px auto;
+    padding: 0 10px;
 }
 
 .media-swap {
@@ -234,29 +235,41 @@ form textarea {
     align-items: center;
 }
 
-.lightbox-media {
-    width: 75%;
-    height: 500px;
-    object-fit: cover;
-    padding: 20px 0;
-    margin-top: -50px;
-}
-
 .change-media {
     color: #901C1C;
     font-size: 40px;
-    /* margin: 0 20px; */
     cursor: pointer;
 }
 
 .close-lightbox {
     display: flex;
     justify-content: flex-end;
-
 }
 
 .close-lightbox img {
-    margin-right: 20px;
-    margin-top: 25px;
+    margin-right: 10px;
+    margin-top: 45px;
+    margin-bottom: -35px;
     cursor: pointer;
+}
+
+.media-box {
+    /* margin-top: -15px; */
+    width: 85%;
+    /* height: 500px; */
+}
+
+/* .media-box img { */
+.lightbox-media {
+width: 100%;
+    object-fit: cover;
+    height: 500px;
+    box-shadow: 5px 0px 5px #C4C4C4;
+}
+
+.media-box p {
+    margin: 10px 0;
+    color: #901C1C;
+    font-weight: 500;
+    font-size: 18px;
 }
