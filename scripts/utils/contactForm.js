@@ -21,4 +21,6 @@ function sendForm() {
     console.log(lastname.value);
     console.log(email.value);
     console.log(msg.value);
+
+    form.reset();
 }

@@ -60,7 +60,7 @@
           <label>Votre message</label>
           <textarea class="text-box msg"></textarea>
         </div>
-        <button class="send-button" onclick="sendForm()">Envoyer</button>
+        <button class="send-button" type="button" onclick="sendForm()">Envoyer</button>
       </form>
     </div>
   </div>
@@ -70,9 +70,9 @@
         <img src="assets/icons/close_red.svg" alt="" onclick="closeLightbox()">
       </div>
       <div class="media-swap">
-        <i class="change-media fas fa-chevron-left"></i>
+        <i class="change-media fas fa-chevron-left" onclick="previousMedia()"></i>
         <div class="media-box"></div>
-        <i class="change-media fas fa-chevron-right"></i>
+        <i class="change-media fas fa-chevron-right" onclick="nextMedia()"></i>
       </div>
     </div>
   </div>
