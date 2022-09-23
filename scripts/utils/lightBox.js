@@ -1,3 +1,7 @@
+/* eslint-disable no-inner-declarations */
+/* eslint-disable no-prototype-builtins */
+/* eslint-disable no-unused-vars */
+// Récupération des infos du photographe
 async function getPhotographers() {
 
     return fetch('../data/photographers.json')
@@ -13,6 +17,7 @@ async function getPhotographers() {
         });
 }
 
+// Récupération des médias du photographe
 async function getMedia() {
 
     return fetch('../data/photographers.json')
@@ -28,35 +33,40 @@ async function getMedia() {
         });
 }
 
+// Récupère le nom du photographe
 async function photographerName() {
+    // Récupération de l'id du photographe dans 'URL
     let url = window.location.href;
     const strs = url.split('=');
     const id = parseInt(strs.at(-1));
 
+    // Récupère les infos du photographe
     const photographers = await getPhotographers();
     const photographer = photographers.find(photograph => photograph.id === id);
 
     return photographer;
 }
-
 photographerName();
 
+// Récupère les medias du photographe
 async function mediasArray() {
+    // Récupération de l'id du photographe dans 'URL
     let url = window.location.href;
     const strs = url.split('=');
     const id = parseInt(strs.at(-1));
 
+    // Récupère les images et vidéos du photographe
     const medias = await getMedia();
     const photographerMedias = medias.filter(media => media.photographerId === id);
 
     return photographerMedias;
-
 }
-
 mediasArray();
 
+// Index du tableau des médias
 let i;
 
+// Affiche le média précédent dans la lightbox
 async function previousMedia() {
 
     let photograph = await photographerName();
@@ -76,10 +86,10 @@ async function previousMedia() {
 
         const mediaBox = document.querySelector(".media-box");
 
+        // Récupère l'extension du média
         function getFileExtension(fileName) {
             return fileName.split('.').pop();
         }
-
         let ext = getFileExtension(media);
 
         if (ext == 'jpg' || ext == 'png' || ext == 'gif') {
@@ -99,12 +109,12 @@ async function previousMedia() {
 
         } else {
             console.error('Wrong format type');
-            console.log(error);
+            // console.log(error);
         }
     }
-
 }
 
+// Affiche le média suivant dans la lightbox
 async function nextMedia() {
 
     let photograph = await photographerName();
@@ -125,10 +135,10 @@ async function nextMedia() {
 
         const mediaBox = document.querySelector(".media-box");
 
+        // Récupère l'extension du média
         function getFileExtension(fileName) {
             return fileName.split('.').pop();
         }
-
         let ext = getFileExtension(media);
 
         if (ext == 'jpg' || ext == 'png' || ext == 'gif') {
@@ -148,18 +158,18 @@ async function nextMedia() {
 
         } else {
             console.error('Wrong format type');
-            console.log(error);
+            // console.log(error);
         }
     }
-
 }
-
 
 const lightbox = document.getElementById("lightbox-container");
 
 let mediaId;
 
+// Affiche la lightbox avec le média qui a été cliqué
 async function displayLightbox(clicked_id, clicked_photograph, clicked_media, clicked_title) {
+
     lightbox.style.display = "block";
 
     const mediaBox = document.querySelector(".media-box");
@@ -168,6 +178,7 @@ async function displayLightbox(clicked_id, clicked_photograph, clicked_media, cl
         return fileName.split('.').pop();
     }
 
+    // Récupère l'extension du média
     let ext = getFileExtension(clicked_media);
 
     if (ext == 'jpg' || ext == 'png' || ext == 'gif') {
@@ -186,7 +197,7 @@ async function displayLightbox(clicked_id, clicked_photograph, clicked_media, cl
 
     } else {
         console.error('Wrong format type');
-        console.log(error);
+        // console.log(error);
     }
 
     const lightBoxMedia = document.querySelector(".lightbox-media");
@@ -196,12 +207,10 @@ async function displayLightbox(clicked_id, clicked_photograph, clicked_media, cl
         return object.id == mediaId;
     });
 
-    console.log(mediaId);
-    console.log(mediaIndex);
     i = mediaIndex;
 }
 
-
+// Ferme la lightbox
 function closeLightbox() {
     lightbox.style.display = "none";
 }
