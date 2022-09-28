@@ -167,7 +167,7 @@ const lightbox = document.getElementById("lightbox-container");
 
 let mediaId;
 
-// Affiche la lightbox avec le média qui a été cliqué
+// Ouvre la lightbox et affiche le média qui a été cliqué
 async function displayLightbox(clicked_id, clicked_photograph, clicked_media, clicked_title) {
 
     lightbox.style.display = "block";

@@ -10,13 +10,13 @@
   <title>Fisheye - photographe </title>
 </head>
 
-<body>
+<body id="body">
   <header>
     <a href="index.html">
-      <img src="assets/images/logo.png" class="logo" />
+      <img src="assets/images/logo.png" class="logo" alt="Fisheye Home Page" />
     </a>
   </header>
-  <main id="main">
+  <main id="main" aria-hidden="false">
     <div class="photograph-header">
       <div class="photograph-infos"></div>
       <button class="contact-button" onclick="displayModal()">Contactez-moi</button>
@@ -32,12 +32,12 @@
 
     </div>
   </main>
-  <div id="contact-modal">
+  <div id="contact-modal" aria-hidden="true" role="dialog" aria-describedby="Contact">
     <div class="modal">
       <header class="modal-header">
         <div>
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" alt="" onclick="closeModal()" />
+          <img class="modal-close" src="assets/icons/close.svg" alt="Fermer" onclick="closeModal()" />
         </div>
         <div class="modal-name">
 
@@ -45,29 +45,29 @@
       </header>
       <form id="form">
         <div>
-          <label>Prénom</label>
-          <input type="text" class="firstname" />
+          <label for="firstname">Prénom</label>
+          <input type="text" id="firstname" aria-label="Prénom"/>
         </div>
         <div>
-          <label>Nom</label>
-          <input type="text" class="lastname" />
+          <label for="lastname">Nom</label>
+          <input type="text" id="lastname" aria-label="Nom"/>
         </div>
         <div>
-          <label>Email</label>
-          <input type="email" class="email" />
+          <label for="email">Email</label>
+          <input type="email" id="email" aria-label="Email"/>
         </div>
         <div>
-          <label>Votre message</label>
-          <textarea class="text-box msg"></textarea>
+          <label for="message">Votre message</label>
+          <textarea id="message" aria-label="Votre message"></textarea>
         </div>
-        <button class="send-button" type="button" onclick="sendForm()">Envoyer</button>
+        <button class="send-button" type="button" onclick="sendForm()" aria-label="Send">Envoyer</button>
       </form>
     </div>
   </div>
   <div id="lightbox-container">
     <div class="lightbox">
       <div class="close-lightbox">
-        <img src="assets/icons/close_red.svg" alt="" onclick="closeLightbox()">
+        <img src="assets/icons/close_red.svg" alt="Close Contact form" onclick="closeLightbox()">
       </div>
       <div class="media-swap">
         <i class="change-media fas fa-chevron-left" onclick="previousMedia()"></i>
