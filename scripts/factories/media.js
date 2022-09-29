@@ -32,7 +32,7 @@ class Photo {
                 </a>
                 <div class="photograpgh-media-infos">
                     <p>${this._title}</p>
-                    <p>${this._likes} <i class="fas fa-heart"></i></p>
+                    <p class="likes" onclick="addOneLike(${this._id}, ${this._likes})"><span class="likes-number ${this._id}">${this._likes}</span> <i class="fas fa-heart"></i></p>
                 </div>`;
     }
 
@@ -60,7 +60,7 @@ class Video {
                 </a>
                 <div class="photograpgh-media-infos">
                     <p>${this._title}</p>
-                    <p>${this._likes} <i class="fas fa-heart"></i></p>
+                    <p class="likes" onclick="addOneLike(${this._id}, ${this._likes})"><span class="likes-number ${this._id}">${this._likes}</span> <i class="fas fa-heart"></i></p>
                 </div>`;
     }
 }
@@ -90,7 +90,7 @@ class Photograph {
     }
 
     createBox() {
-        return `<p>297 081 <i class="fas fa-heart"></i></p>
+        return `<p id="total-likes">297 081 <i class="fas fa-heart"></i></p>
                 <p> ${this._price}€ / jour</p>`;
     }
 

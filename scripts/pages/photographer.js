@@ -92,3 +92,27 @@ async function init() {
 
 init();
 
+// Incrémente le compteur total du nombre de likes du photographe
+function totalLikes(mediasLike) {
+    // const mediasLikes = document.getElementsByClassName("likes-number");
+    // console.log(mediasLikes);
+    let total = 0;
+    mediasLike.forEach((media) => {
+        total = total + media.innerHTML;
+        console.log(media.innerHTML)
+    })
+}
+
+// Incrémente le compteur de likes d'un média lors du clic
+function addOneLike(clicked_id, clicked_likes) {
+    const mediasLikes = document.getElementsByClassName("likes-number");
+
+    const media = document.getElementsByClassName(clicked_id);
+    const requiredMedia = media[0];
+    let numberOfLikes = clicked_likes + 1;
+
+    requiredMedia.innerHTML = numberOfLikes;
+    totalLikes(mediasLikes);
+    console.log(requiredMedia.innerHTML)
+}
+

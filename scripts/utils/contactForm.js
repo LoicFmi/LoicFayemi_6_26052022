@@ -3,15 +3,14 @@ const form = document.getElementById("form");
 const modal = document.getElementById("contact-modal");
 const main = document.getElementById("main");
 const body = document.getElementById("body");
-// const modalOpenBtn = document.querySelector(".contact-button");
-// const modalCloseBtn = document.querySelector(".modal-close");
+const modalOpenBtn = document.querySelector(".contact-button");
+const firstname = document.getElementById("firstname");
 
 // Gère l'accessibilité à l'ouverture de la modale
 const openingModal = () => {
     main.setAttribute('aria-hidden', 'true');
     modal.setAttribute('aria-hidden', 'false');
     body.style.overflow = 'hidden';
-    // modalCloseBtn.focus();
 }
 
 // Gère l'accessibilité à la fermeture de la modale
@@ -19,13 +18,14 @@ const closingModal = () => {
     main.setAttribute('aria-hidden', 'false');
     modal.setAttribute('aria-hidden', 'true');
     body.style.overflow = 'auto';
-    // modalOpenBtn.focus();
+    modalOpenBtn.focus();
 }
 
 // Ouvre la modale
 function displayModal() {
     modal.style.display = "block";
     openingModal();
+    firstname.focus();
 }
 
 // Ferme la modale
@@ -51,7 +51,7 @@ function sendForm() {
 }
 
 // Ferme la modale à l'appui sur la touche Echap
-document.addEventListener('keydown', function (e) {
+modal.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
         closeModal();
     }

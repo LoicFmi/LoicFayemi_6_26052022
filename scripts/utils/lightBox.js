@@ -61,7 +61,6 @@ async function mediasArray() {
 
     return photographerMedias;
 }
-mediasArray();
 
 // Index du tableau des médias
 let i;
@@ -122,8 +121,9 @@ async function nextMedia() {
 
     let media;
     let mediaArray = await mediasArray();
+    let length = mediaArray.length - 1;
 
-    if (i < 9) {
+    if (i < length) {
 
         i = i + 1;
 
@@ -173,6 +173,13 @@ async function displayLightbox(clicked_id, clicked_photograph, clicked_media, cl
     lightbox.style.display = "block";
 
     const mediaBox = document.querySelector(".media-box");
+    const main = document.getElementById("main");
+    const body = document.getElementById("body");
+    const lightBox = document.getElementById("lightbox-container");
+
+    main.setAttribute('aria-hidden', 'true');
+    lightBox.setAttribute('aria-hidden', 'false');
+    body.style.overflow = 'hidden';
 
     function getFileExtension(fileName) {
         return fileName.split('.').pop();
@@ -181,6 +188,7 @@ async function displayLightbox(clicked_id, clicked_photograph, clicked_media, cl
     // Récupère l'extension du média
     let ext = getFileExtension(clicked_media);
 
+    // Créé une image ou une vidéo en fonction de l'extension récupérée
     if (ext == 'jpg' || ext == 'png' || ext == 'gif') {
 
         mediaBox.innerHTML = `<img id=${clicked_id} class="lightbox-media" src='../assets/photographers/${clicked_photograph}/${clicked_media}' alt= '${clicked_title}'></img>
@@ -213,4 +221,26 @@ async function displayLightbox(clicked_id, clicked_photograph, clicked_media, cl
 // Ferme la lightbox
 function closeLightbox() {
     lightbox.style.display = "none";
+
+    const main = document.getElementById("main");
+    const body = document.getElementById("body");
+    const lightBox = document.getElementById("lightbox-container");
+    const media = document.querySelector(".photograph-media-content");
+
+    main.setAttribute('aria-hidden', 'false');
+    lightBox.setAttribute('aria-hidden', 'true');
+    body.style.overflow = 'auto';
+    media.focus();
 }
+
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeLightbox();
+    }
+    if (e.key === 'ArrowRight') {
+        nextMedia();
+    }
+    if (e.key === 'ArrowLeft') {
+        previousMedia();
+    }
+})
