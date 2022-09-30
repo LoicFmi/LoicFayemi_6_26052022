@@ -46,7 +46,77 @@ async function photographerName() {
 
     return photographer;
 }
-photographerName();
+// photographerName();
+
+const lightbox = document.getElementById("lightbox-container");
+let mediaId;
+
+// Ouvre la lightbox et affiche le média qui a été cliqué
+async function displayLightbox(clicked_id, clicked_photograph, clicked_media, clicked_title) {
+
+    lightbox.style.display = "block";
+
+    const mediaBox = document.querySelector(".media-box");
+    const main = document.getElementById("main");
+    const body = document.getElementById("body");
+    const lightBox = document.getElementById("lightbox-container");
+    
+
+    main.setAttribute('aria-hidden', 'true');
+    lightBox.setAttribute('aria-hidden', 'false');
+    body.style.overflow = 'hidden';
+
+    function getFileExtension(fileName) {
+        return fileName.split('.').pop();
+    }
+
+    // Récupère l'extension du média
+    let ext = getFileExtension(clicked_media);
+
+    // Créé une image ou une vidéo en fonction de l'extension récupérée
+    if (ext == 'jpg' || ext == 'png' || ext == 'gif') {
+
+        mediaBox.innerHTML = `<img id=${clicked_id} class="lightbox-media" src='../assets/photographers/${clicked_photograph}/${clicked_media}' alt= '${clicked_title}'></img>
+        <p>${clicked_title}</p>
+        </div>`
+
+    } else if (ext == 'mp4') {
+
+        mediaBox.innerHTML = `<video id=${clicked_id} class="lightbox-media" alt='${clicked_title}' controls autoplay loop>
+        <source src='../assets/photographers/${clicked_photograph}/${clicked_media}' type="video/mp4">
+        Your browser does not support the video tag.
+        </video>
+        <p>${clicked_title}</p>`
+
+    } else {
+        console.error('Wrong format type');
+        // console.log(error);
+    }
+
+    const lightBoxMedia = document.querySelector(".lightbox-media");
+    mediaId = lightBoxMedia.id;
+    let mediaArray = await mediasArray();
+    const mediaIndex = mediaArray.findIndex(object => {
+        return object.id == mediaId;
+    });
+
+    i = mediaIndex;
+}
+
+// Ferme la lightbox
+function closeLightbox() {
+    lightbox.style.display = "none";
+
+    const main = document.getElementById("main");
+    const body = document.getElementById("body");
+    const lightBox = document.getElementById("lightbox-container");
+    // const media = document.querySelector(".photograph-media-content");
+
+    main.setAttribute('aria-hidden', 'false');
+    lightBox.setAttribute('aria-hidden', 'true');
+    body.style.overflow = 'auto';
+    // media.focus();
+}
 
 // Récupère les medias du photographe
 async function mediasArray() {
@@ -163,84 +233,17 @@ async function nextMedia() {
     }
 }
 
-const lightbox = document.getElementById("lightbox-container");
-
-let mediaId;
-
-// Ouvre la lightbox et affiche le média qui a été cliqué
-async function displayLightbox(clicked_id, clicked_photograph, clicked_media, clicked_title) {
-
-    lightbox.style.display = "block";
-
-    const mediaBox = document.querySelector(".media-box");
-    const main = document.getElementById("main");
-    const body = document.getElementById("body");
-    const lightBox = document.getElementById("lightbox-container");
-
-    main.setAttribute('aria-hidden', 'true');
-    lightBox.setAttribute('aria-hidden', 'false');
-    body.style.overflow = 'hidden';
-
-    function getFileExtension(fileName) {
-        return fileName.split('.').pop();
-    }
-
-    // Récupère l'extension du média
-    let ext = getFileExtension(clicked_media);
-
-    // Créé une image ou une vidéo en fonction de l'extension récupérée
-    if (ext == 'jpg' || ext == 'png' || ext == 'gif') {
-
-        mediaBox.innerHTML = `<img id=${clicked_id} class="lightbox-media" src='../assets/photographers/${clicked_photograph}/${clicked_media}' alt= '${clicked_title}'></img>
-        <p>${clicked_title}</p>
-        </div>`
-
-    } else if (ext == 'mp4') {
-
-        mediaBox.innerHTML = `<video id=${clicked_id} class="lightbox-media" alt='${clicked_title}' controls autoplay loop>
-        <source src='../assets/photographers/${clicked_photograph}/${clicked_media}' type="video/mp4">
-        Your browser does not support the video tag.
-        </video>
-        <p>${clicked_title}</p>`
-
-    } else {
-        console.error('Wrong format type');
-        // console.log(error);
-    }
-
-    const lightBoxMedia = document.querySelector(".lightbox-media");
-    mediaId = lightBoxMedia.id;
-    let mediaArray = await mediasArray();
-    const mediaIndex = mediaArray.findIndex(object => {
-        return object.id == mediaId;
-    });
-
-    i = mediaIndex;
-}
-
-// Ferme la lightbox
-function closeLightbox() {
-    lightbox.style.display = "none";
-
-    const main = document.getElementById("main");
-    const body = document.getElementById("body");
-    const lightBox = document.getElementById("lightbox-container");
-    const media = document.querySelector(".photograph-media-content");
-
-    main.setAttribute('aria-hidden', 'false');
-    lightBox.setAttribute('aria-hidden', 'true');
-    body.style.overflow = 'auto';
-    media.focus();
-}
 
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
         closeLightbox();
     }
     if (e.key === 'ArrowRight') {
+        e.preventDefault();
         nextMedia();
     }
     if (e.key === 'ArrowLeft') {
+        e.preventDefault();
         previousMedia();
     }
 })

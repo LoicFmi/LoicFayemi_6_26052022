@@ -90,7 +90,7 @@ class Photograph {
     }
 
     createBox() {
-        return `<p id="total-likes">297 081 <i class="fas fa-heart"></i></p>
+        return `<p><span id="total-likes"></span> <i class="fas fa-heart"></i></p>
                 <p> ${this._price}€ / jour</p>`;
     }
 

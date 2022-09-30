@@ -79,40 +79,44 @@ async function init() {
     // Affiche les infos du photographe sur la page
     displayPhotograph(photographer);
 
-    // Affiche la box du photographe en bas de la page
-    displayBox(photographer);
-
     // Récupère les images et vidéos du photographe
     const medias = await getMedia();
     const photographerMedias = medias.filter(media => media.photographerId === id);
-
+    
     // Affiche les médias du photographe sur la page
     displayMedia(photographerMedias, photographer.name);
-}
+    
+    // Affiche la box du photographe en bas de la page
+    displayBox(photographer);
 
+    // Affiche le nombre total de likes du photographe
+    totalLikes();
+}
 init();
 
 // Incrémente le compteur total du nombre de likes du photographe
-function totalLikes(mediasLike) {
-    // const mediasLikes = document.getElementsByClassName("likes-number");
-    // console.log(mediasLikes);
+function totalLikes() {
+    const mediasLikes = document.getElementsByClassName("likes-number");
+    const totalLikes = document.getElementById("total-likes");
+
     let total = 0;
-    mediasLike.forEach((media) => {
-        total = total + media.innerHTML;
-        console.log(media.innerHTML)
-    })
+    let length = mediasLikes.length;
+
+    for (let i = 0; i < length; i++) {
+        total = total + Number(mediasLikes[i].innerHTML);
+    }
+    totalLikes.innerHTML = total;
 }
 
 // Incrémente le compteur de likes d'un média lors du clic
 function addOneLike(clicked_id, clicked_likes) {
-    const mediasLikes = document.getElementsByClassName("likes-number");
 
     const media = document.getElementsByClassName(clicked_id);
     const requiredMedia = media[0];
     let numberOfLikes = clicked_likes + 1;
 
     requiredMedia.innerHTML = numberOfLikes;
-    totalLikes(mediasLikes);
-    console.log(requiredMedia.innerHTML)
+
+    totalLikes();
 }
 
