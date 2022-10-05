@@ -24,6 +24,14 @@
     </div>
     <div class="photograph-sorting">
       <p>Trier par</p>
+      <div class="sort-container">
+        <button class="sort-button" aria-expanded="false" aria-haspopup="listbox">Popularité <i class="sort-arrow fas fa-angle-up"></i></button>
+        <ul class="sort-list" role="listbox">
+          <li class="sort-list-item" id="popularity" role="button">Popularité</li>
+          <li class="sort-list-item" id="date" role="button">Date</li>
+          <li class="sort-list-item" id="title" role="button">Titre</li>
+        </ul>
+      </div>
     </div>
     <div class="photograph-media">
 
@@ -46,15 +54,15 @@
       <form id="form">
         <div>
           <label for="firstname">Prénom</label>
-          <input type="text" id="firstname" aria-label="Prénom"/>
+          <input type="text" id="firstname" aria-label="Prénom" />
         </div>
         <div>
           <label for="lastname">Nom</label>
-          <input type="text" id="lastname" aria-label="Nom"/>
+          <input type="text" id="lastname" aria-label="Nom" />
         </div>
         <div>
           <label for="email">Email</label>
-          <input type="email" id="email" aria-label="Email"/>
+          <input type="email" id="email" aria-label="Email" />
         </div>
         <div>
           <label for="message">Votre message</label>
