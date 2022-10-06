@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 // Récupération des infos du photographe
 async function getPhotographers() {
@@ -79,13 +80,14 @@ async function init() {
     // Affiche les infos du photographe sur la page
     displayPhotograph(photographer);
 
-    // Récupère les images et vidéos du photographe
-    const medias = await getMedia();
-    const photographerMedias = medias.filter(media => media.photographerId === id);
-    
+    // // Récupère les images et vidéos du photographe
+    // const medias = await getMedia();
+    // const photographerMedias = medias.filter(media => media.photographerId === id);
+
     // Affiche les médias du photographe sur la page
-    displayMedia(photographerMedias, photographer.name);
-    
+    // displayMedia(photographerMedias, photographer.name);
+    await sortByPopularity();
+
     // Affiche la box du photographe en bas de la page
     displayBox(photographer);
 
@@ -101,7 +103,7 @@ function totalLikes() {
 
     let total = 0;
     let length = mediasLikes.length;
-
+    
     for (let i = 0; i < length; i++) {
         total = total + Number(mediasLikes[i].innerHTML);
     }
@@ -118,5 +120,129 @@ function addOneLike(clicked_id, clicked_likes) {
     requiredMedia.innerHTML = numberOfLikes;
 
     totalLikes();
+}
+
+// Affiche la liste de tri
+function displaySorting() {
+    const sortListItem = document.getElementsByClassName("sort-list-item");
+
+    for (let i = 0; i < sortListItem.length; i++) {
+        sortListItem[i].style.display = "flex"
+    }
+}
+
+// Masque la liste de tri
+function hideSorting() {
+    const sortListItem = document.getElementsByClassName("sort-list-item");
+    
+    for (let i = 0; i < sortListItem.length; i++) {
+        sortListItem[i].style.display = "none"
+    }
+}
+
+// Trie les médias du photographe par popularité
+async function sortByPopularity() {
+    // Récupération de l'id du photographe dans 'URL
+    let url = window.location.href;
+    const strs = url.split('=');
+    const id = parseInt(strs.at(-1));
+
+    // Récupère les infos du photographe
+    const photographers = await getPhotographers();
+    const photographer = photographers.find(photograph => photograph.id === id);
+
+    // Récupère les images et vidéos du photographe
+    const medias = await getMedia();
+    const photographerMedias = medias.filter(media => media.photographerId === id);
+
+    // Trie le tableau contenant les médias du photographe
+    function compare(a, b) {
+        if (a.likes > b.likes) {
+            return -1;
+        }
+        if (a.likes < b.likes) {
+            return 1;
+        }
+        return 0;
+    }
+    photographerMedias.sort(compare);
+
+    // Vide la partie médias du photographe
+    const photographMedia = document.querySelector(".photograph-media");
+    photographMedia.innerHTML = "";
+
+    // Affiche les médias du photographe triés
+    displayMedia(photographerMedias, photographer.name);
+}
+
+// Trie les médias du photographe par date
+async function sortByDate() {
+    // Récupération de l'id du photographe dans 'URL
+    let url = window.location.href;
+    const strs = url.split('=');
+    const id = parseInt(strs.at(-1));
+
+    // Récupère les infos du photographe
+    const photographers = await getPhotographers();
+    const photographer = photographers.find(photograph => photograph.id === id);
+
+    // Récupère les images et vidéos du photographe
+    const medias = await getMedia();
+    const photographerMedias = medias.filter(media => media.photographerId === id);
+
+    // Trie le tableau contenant les médias du photographe
+    function compare(a, b) {
+        if (a.date > b.date) {
+            return -1;
+        }
+        if (a.date < b.date) {
+            return 1;
+        }
+        return 0;
+    }
+    photographerMedias.sort(compare);
+
+    // Vide la partie médias du photographe
+    const photographMedia = document.querySelector(".photograph-media");
+    photographMedia.innerHTML = "";
+
+    // Affiche les médias du photographe triés
+    displayMedia(photographerMedias, photographer.name);
+}
+
+// Trie les médias du photographe par titre (ordre alphabétique)
+// eslint-disable-next-line no-unused-vars
+async function sortByTitle() {
+    // Récupération de l'id du photographe dans 'URL
+    let url = window.location.href;
+    const strs = url.split('=');
+    const id = parseInt(strs.at(-1));
+
+    // Récupère les infos du photographe
+    const photographers = await getPhotographers();
+    const photographer = photographers.find(photograph => photograph.id === id);
+
+    // Récupère les images et vidéos du photographe
+    const medias = await getMedia();
+    const photographerMedias = medias.filter(media => media.photographerId === id);
+
+    // Trie le tableau contenant les médias du photographe
+    function compare(a, b) {
+        if (a.title < b.title) {
+            return -1;
+        }
+        if (a.title > b.title) {
+            return 1;
+        }
+        return 0;
+    }
+    photographerMedias.sort(compare);
+
+    // Vide la partie médias du photographe
+    const photographMedia = document.querySelector(".photograph-media");
+    photographMedia.innerHTML = "";
+
+    // Affiche les médias du photographe triés
+    displayMedia(photographerMedias, photographer.name);
 }
 

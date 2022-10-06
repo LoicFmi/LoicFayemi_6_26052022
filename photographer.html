@@ -25,11 +25,11 @@
     <div class="photograph-sorting">
       <p>Trier par</p>
       <div class="sort-container">
-        <button class="sort-button" aria-expanded="false" aria-haspopup="listbox">Popularité <i class="sort-arrow fas fa-angle-up"></i></button>
+        <button class="sort-button" aria-expanded="false" aria-haspopup="listbox" onclick="displaySorting()">Popularité <i class="sort-arrow fas fa-angle-down"></i></button>
         <ul class="sort-list" role="listbox">
-          <li class="sort-list-item" id="popularity" role="button">Popularité</li>
-          <li class="sort-list-item" id="date" role="button">Date</li>
-          <li class="sort-list-item" id="title" role="button">Titre</li>
+          <li class="sort-list-item" id="popularity" role="button" onclick="sortByPopularity(),hideSorting()">Popularité <i class="list-arrow fas fa-angle-up"></i></li>
+          <li class="sort-list-item" id="date" role="button" onclick="sortByDate(),hideSorting()">Date</li>
+          <li class="sort-list-item" id="title" role="button" onclick="sortByTitle(),hideSorting()">Titre</li>
         </ul>
       </div>
     </div>

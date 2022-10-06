@@ -2,6 +2,12 @@ main {
     margin: 0 100px;
 }
 
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;
@@ -42,24 +48,62 @@ main {
 .photograph-sorting {
     display: flex;
     font-weight: 700;
-    margin-bottom: 58px;
+    margin: 9px 0 58px 0;
 }
 
 .photograph-sorting p {
     margin-right: 25px;
 }
 
-.photograph-sorting select {
-    background-color: #911C1C;
+.sort-button {
+    font-size: 18px;
+    font-weight: bold;
     color: white;
-    font-weight: 700;
+    padding: 11px;
+    width: 170px;
+    height: 60px;
+    border: none;
+    background-color: #911C1C;
     border-radius: 5px;
-    padding: 18px 18px 18px 18px;
+    cursor: pointer;
 }
 
-#sorting img {
+.sort-arrow {
+    padding: 0 2px 0 15px;
+}
+
+.sort-list {
+    position: relative;
+    top: -60px; 
+    font-size: 18px;
+    font-weight: 700;
+    color: white;
+    width: 170px;
+    border: none;
+    background-color: #911C1C;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.sort-list-item {
     display: none;
-    color: blue;
+    align-items: center;
+    padding-left: 9px;
+    margin: 0 15px;
+    height: 60px;
+}
+
+.list-arrow {
+    padding: 0 2px 0 20px;
+
+}
+
+#popularity {
+    border-bottom: 1px solid white;
+}
+
+#date {
+    border-bottom: 1px solid white;
 }
 
 .photograph-media {
@@ -68,6 +112,7 @@ main {
     row-gap: 30px;
     column-gap: 10px;
     flex-wrap: wrap;
+    margin-bottom: 70px;
 }
 
 .photograph-media article {
@@ -141,26 +186,6 @@ main {
     color: black;
 }
 
-.sort-button {
-    font-size: 18px;
-    font-weight: bold;
-    color: white;
-    padding: 11px;
-    /* width: 170px; */
-    height: 60px;
-    border: none;
-    background-color: #911C1C;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.sort-arrow {
-    padding: 0 5px;
-}
-
-.sort-list-item {
-    display: none;
-}
 
 #contact-modal {
     display: none;
