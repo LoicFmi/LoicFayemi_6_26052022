@@ -46,7 +46,6 @@ async function photographerName() {
 
     return photographer;
 }
-// photographerName();
 
 const lightbox = document.getElementById("lightbox-container");
 let mediaId;

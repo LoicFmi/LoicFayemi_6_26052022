@@ -48,18 +48,19 @@ ul {
 .photograph-sorting {
     display: flex;
     font-weight: 700;
-    margin: 9px 0 58px 0;
+    margin-top: 9px;
 }
 
 .photograph-sorting p {
     margin-right: 25px;
 }
 
-.sort-button {
+#sort-button {
     font-size: 18px;
     font-weight: bold;
     color: white;
     padding: 11px;
+    margin-bottom: 58px;
     width: 170px;
     height: 60px;
     border: none;
@@ -68,13 +69,20 @@ ul {
     cursor: pointer;
 }
 
+#sort-button:hover,
+#sort-button:focus {
+    background-color: #DB8876;
+    color: black;
+}
+
 .sort-arrow {
     padding: 0 2px 0 15px;
 }
 
 .sort-list {
-    position: relative;
-    top: -60px; 
+    position: absolute;
+    top: 400px;
+    z-index: 1;
     font-size: 18px;
     font-weight: 700;
     color: white;
@@ -89,8 +97,14 @@ ul {
     display: none;
     align-items: center;
     padding-left: 9px;
-    margin: 0 15px;
+    padding: 0 28px;
     height: 60px;
+}
+
+.sort-list-item:hover,
+.sort-list-item:focus {
+    background-color: #DB8876;
+    color: black;
 }
 
 .list-arrow {
@@ -99,11 +113,29 @@ ul {
 }
 
 #popularity {
-    border-bottom: 1px solid white;
+    border-radius: 5px 5px 0 0;
 }
 
-#date {
-    border-bottom: 1px solid white;
+#popularity::after {
+    content: "";
+    position: absolute;
+    left: 17px;
+    top: 59px;
+    width: 80%;
+    border-bottom: 2px solid white;
+}
+
+#date::after {
+    content: "";
+    position: absolute;
+    left: 17px;
+    top: 119px;
+    width: 80%;
+    border-bottom: 2px solid white;
+}
+
+#title {
+    border-radius: 0 0 5px 5px;
 }
 
 .photograph-media {
@@ -181,7 +213,8 @@ ul {
     transform: translate(-50%);
 }
 
-.contact-button:hover, .contact-button:focus {
+.contact-button:hover,
+.contact-button:focus {
     background-color: #DB8876;
     color: black;
 }
@@ -281,7 +314,8 @@ form textarea {
     cursor: pointer;
 }
 
-.send-button:hover, .send-button:focus {
+.send-button:hover,
+.send-button:focus {
     background-color: #DB8876;
     color: black;
 }
@@ -335,7 +369,7 @@ form textarea {
 }
 
 .lightbox-media {
-width: 100%;
+    width: 100%;
     object-fit: cover;
     height: 500px;
     box-shadow: 5px 0px 5px #C4C4C4;

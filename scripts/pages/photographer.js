@@ -80,12 +80,7 @@ async function init() {
     // Affiche les infos du photographe sur la page
     displayPhotograph(photographer);
 
-    // // Récupère les images et vidéos du photographe
-    // const medias = await getMedia();
-    // const photographerMedias = medias.filter(media => media.photographerId === id);
-
-    // Affiche les médias du photographe sur la page
-    // displayMedia(photographerMedias, photographer.name);
+    // Affiche les médias du photographe sur la page, triés par popularité
     await sortByPopularity();
 
     // Affiche la box du photographe en bas de la page
@@ -122,9 +117,14 @@ function addOneLike(clicked_id, clicked_likes) {
     totalLikes();
 }
 
+const sortButton = document.getElementById("sort-button");
+const sortListItem = document.getElementsByClassName("sort-list-item");
+
 // Affiche la liste de tri
 function displaySorting() {
-    const sortListItem = document.getElementsByClassName("sort-list-item");
+
+    sortButton.setAttribute('aria-hidden', 'true')
+    sortButton.setAttribute('aria-expanded', 'true')
 
     for (let i = 0; i < sortListItem.length; i++) {
         sortListItem[i].style.display = "flex"
@@ -133,8 +133,10 @@ function displaySorting() {
 
 // Masque la liste de tri
 function hideSorting() {
-    const sortListItem = document.getElementsByClassName("sort-list-item");
-    
+
+    sortButton.setAttribute('aria-hidden', 'false')
+    sortButton.setAttribute('aria-expanded', 'false')
+
     for (let i = 0; i < sortListItem.length; i++) {
         sortListItem[i].style.display = "none"
     }
@@ -173,6 +175,12 @@ async function sortByPopularity() {
 
     // Affiche les médias du photographe triés
     displayMedia(photographerMedias, photographer.name);
+
+    // Change le texte du bouton
+    const sortButtonTxt = document.getElementById("sort-button-txt");
+    sortButtonTxt.textContent = "Popularité";
+
+    return photographerMedias;
 }
 
 // Trie les médias du photographe par date
@@ -208,10 +216,13 @@ async function sortByDate() {
 
     // Affiche les médias du photographe triés
     displayMedia(photographerMedias, photographer.name);
+
+    // Change le texte du bouton
+    const sortButtonTxt = document.getElementById("sort-button-txt");
+    sortButtonTxt.textContent = "Date";
 }
 
 // Trie les médias du photographe par titre (ordre alphabétique)
-// eslint-disable-next-line no-unused-vars
 async function sortByTitle() {
     // Récupération de l'id du photographe dans 'URL
     let url = window.location.href;
@@ -240,9 +251,13 @@ async function sortByTitle() {
 
     // Vide la partie médias du photographe
     const photographMedia = document.querySelector(".photograph-media");
-    photographMedia.innerHTML = "";
+    photographMedia.innerHTML = " ";
 
     // Affiche les médias du photographe triés
     displayMedia(photographerMedias, photographer.name);
+
+    // Change le texte du bouton
+    const sortButtonTxt = document.getElementById("sort-button-txt");
+    sortButtonTxt.textContent = "Titre";
 }
 
