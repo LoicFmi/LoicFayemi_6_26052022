@@ -105,7 +105,7 @@ function closeLightbox() {
     const main = document.getElementById("main");
     const body = document.getElementById("body");
     const lightBox = document.getElementById("lightbox-container");
-    
+
     lightbox.style.display = "none";
     main.setAttribute('aria-hidden', 'false');
     lightBox.setAttribute('aria-hidden', 'true');
@@ -146,8 +146,8 @@ async function previousMedia() {
     if (i > 0) {
 
         i = i - 1;
-        
-        if(Object.prototype.hasOwnProperty.call(mediaArray[i], 'image')) {
+
+        if (Object.prototype.hasOwnProperty.call(mediaArray[i], 'image')) {
             media = mediaArray[i].image;
         } else if (Object.prototype.hasOwnProperty.call(mediaArray[i], 'video')) {
             media = mediaArray[i].video;
@@ -196,7 +196,7 @@ async function nextMedia() {
 
         i = i + 1;
 
-        if(Object.prototype.hasOwnProperty.call(mediaArray[i], 'image')) {
+        if (Object.prototype.hasOwnProperty.call(mediaArray[i], 'image')) {
             media = mediaArray[i].image;
         } else if (Object.prototype.hasOwnProperty.call(mediaArray[i], 'video')) {
             media = mediaArray[i].video;

@@ -13,7 +13,7 @@ async function getPhotographers() {
             console.error('Erreur fetch');
             console.log(error);
         });
-} 
+}
 
 // Affiche les photographes sur la page
 async function displayData(photographers) {

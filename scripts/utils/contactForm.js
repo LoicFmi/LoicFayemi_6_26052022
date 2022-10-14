@@ -51,7 +51,7 @@ function sendForm() {
 }
 
 // Ferme la modale à l'appui sur la touche Echap
-modal.addEventListener('keydown', function(e) {
+modal.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') {
         closeModal();
     }
