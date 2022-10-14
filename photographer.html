@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
 <head>
   <link href="css/style.css" rel="stylesheet" type="text/css" />
@@ -25,11 +25,15 @@
     <div class="photograph-sorting">
       <p>Trier par</p>
       <div class="sort-container">
-        <button id="sort-button" aria-hidden="false" aria-expanded="false" aria-haspopup="listbox" onclick="displaySorting()"><span id="sort-button-txt">Popularité</span> <i class="sort-arrow fas fa-angle-down"></i></button>
+        <button id="sort-button" aria-hidden="false" aria-expanded="false" aria-haspopup="listbox"
+          onclick="displaySorting()"><span id="sort-button-txt">Popularité</span> <em
+            class="sort-arrow fas fa-angle-down"></em></button>
         <ul class="sort-list" role="listbox">
-          <li class="sort-list-item" id="popularity" role="button" tabindex="0" onclick="sortByPopularity(),hideSorting()">Popularité <i class="list-arrow fas fa-angle-up"></i></li>
+          <li class="sort-list-item" id="popularity" role="button" tabindex="0"
+            onclick="sortByPopularity(),hideSorting()">Popularité <em class="list-arrow fas fa-angle-up"></em></li>
           <li class="sort-list-item" id="date" role="button" tabindex="0" onclick="sortByDate(),hideSorting()">Date</li>
-          <li class="sort-list-item" id="title" role="button" tabindex="0" onclick="sortByTitle(),hideSorting()">Titre</li>
+          <li class="sort-list-item" id="title" role="button" tabindex="0" onclick="sortByTitle(),hideSorting()">Titre
+          </li>
         </ul>
       </div>
     </div>
@@ -78,9 +82,9 @@
         <img src="assets/icons/close_red.svg" alt="Close Contact form" onclick="closeLightbox()">
       </div>
       <div class="media-swap">
-        <i class="change-media fas fa-chevron-left" onclick="previousMedia()"></i>
+        <em class="change-media fas fa-chevron-left" onclick="previousMedia()"></em>
         <div class="media-box"></div>
-        <i class="change-media fas fa-chevron-right" onclick="nextMedia()"></i>
+        <em class="change-media fas fa-chevron-right" onclick="nextMedia()"></em>
       </div>
     </div>
   </div>

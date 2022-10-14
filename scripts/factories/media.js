@@ -1,10 +1,9 @@
-/* eslint-disable no-prototype-builtins */
 /* eslint-disable no-unused-vars */
 class MediaFactory {
     constructor(data, photographerName) {
-        if (data.hasOwnProperty('image')) {
+        if (Object.prototype.hasOwnProperty.call(data, 'image')) {
             return new Photo(data, photographerName)
-        } else if (data.hasOwnProperty('video')) {
+        } else if (Object.prototype.hasOwnProperty.call(data, 'video')) {
             return new Video(data, photographerName)
         } else {
             throw 'Unknown type format'
@@ -32,7 +31,7 @@ class Photo {
                 </a>
                 <div class="photograpgh-media-infos">
                     <p>${this._title}</p>
-                    <p class="likes"><span class="likes-number ${this._id}" tabindex="0">${this._likes}</span> <a class="fas fa-heart" href ="#" role="button" tabindex="0" onclick="addOneLike(${this._id}, ${this._likes}); return false"></a></p>
+                    <p class="likes"><span class="likes-number ${this._id}" tabindex="0">${this._likes}</span> <a aria-label="like button" href ="#" role="button" tabindex="0" onclick="addOneLike(${this._id}, ${this._likes}); return false"><em class="fas fa-heart"></em></a></p>
                 </div>`;
     }
 
@@ -60,7 +59,7 @@ class Video {
                 </a>
                 <div class="photograpgh-media-infos">
                     <p>${this._title}</p>
-                    <p class="likes"><span class="likes-number ${this._id}" tabindex="0">${this._likes}</span> <a class="fas fa-heart" href="#" role="button" tabindex="0" onclick="addOneLike(${this._id}, ${this._likes}); return false"></a></p>
+                    <p class="likes"><span class="likes-number ${this._id}" tabindex="0">${this._likes}</span> <a aria-label="like button" href ="#" role="button" tabindex="0" onclick="addOneLike(${this._id}, ${this._likes}); return false"><em class="fas fa-heart"></em></a></p>
                 </div>`;
     }
 }
@@ -90,7 +89,7 @@ class Photograph {
     }
 
     createBox() {
-        return `<p><span id="total-likes"></span> <i class="fas fa-heart"></i></p>
+        return `<p><span id="total-likes"></span> <em class="fas fa-heart"></em></p>
                 <p> ${this._price}€ / jour</p>`;
     }
 

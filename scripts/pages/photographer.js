@@ -1,11 +1,11 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 // Récupération des infos du photographe
 const sortButton = document.getElementById("sort-button");
-// const sortList = document.getElementsByClassName("sort-list");
 const sortListItem = document.getElementsByClassName("sort-list-item");
 const sortPopularity = document.getElementById("popularity");
 const sortDate = document.getElementById("date");
 const sortTitle = document.getElementById("title");
-// const likes = document.getElementsByClassName("likes");
 
 
 async function getPhotographers() {
