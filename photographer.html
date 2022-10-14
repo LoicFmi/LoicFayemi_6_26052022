@@ -1,36 +1,95 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
-  </head>
-  <body>
-    <header>
-      <img src="assets/images/logo.png" class="logo" />
-    </header>
-    <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+<html lang="fr">
+
+<head>
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <meta charset="utf-8">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/97b7c9b234.js" crossorigin="anonymous"></script>
+  <title>Fisheye - photographe </title>
+</head>
+
+<body id="body">
+  <header>
+    <a href="index.html">
+      <img src="assets/images/logo.png" class="logo" alt="Fisheye Home Page" />
+    </a>
+  </header>
+  <main id="main" aria-hidden="false">
+    <div class="photograph-header">
+      <div class="photograph-infos"></div>
+      <button class="contact-button" onclick="displayModal()">Contactez-moi</button>
+      <div class="photograph-portrait"></div>
+    </div>
+    <div class="photograph-sorting">
+      <p>Trier par</p>
+      <div class="sort-container">
+        <button id="sort-button" aria-hidden="false" aria-expanded="false" aria-haspopup="listbox"
+          onclick="displaySorting()"><span id="sort-button-txt">Popularité</span> <em
+            class="sort-arrow fas fa-angle-down"></em></button>
+        <ul class="sort-list" role="listbox">
+          <li class="sort-list-item" id="popularity" role="button" tabindex="0"
+            onclick="sortByPopularity(),hideSorting()">Popularité <em class="list-arrow fas fa-angle-up"></em></li>
+          <li class="sort-list-item" id="date" role="button" tabindex="0" onclick="sortByDate(),hideSorting()">Date</li>
+          <li class="sort-list-item" id="title" role="button" tabindex="0" onclick="sortByTitle(),hideSorting()">Titre
+          </li>
+        </ul>
       </div>
-    </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
+    </div>
+    <div class="photograph-media">
+    </div>
+    <div class="photograph-box">
+    </div>
+  </main>
+  <div id="contact-modal" aria-hidden="true" role="dialog" aria-describedby="Contact">
+    <div class="modal">
+      <header class="modal-header">
+        <div>
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
-    <script src="/scripts/utils/contactForm.js"></script>
-  </body>
+          <img class="modal-close" src="assets/icons/close.svg" alt="Fermer" onclick="closeModal()" />
+        </div>
+        <div class="modal-name">
+        </div>
+      </header>
+      <form id="form">
+        <div>
+          <label for="firstname">Prénom</label>
+          <input type="text" id="firstname" aria-label="Prénom" />
+        </div>
+        <div>
+          <label for="lastname">Nom</label>
+          <input type="text" id="lastname" aria-label="Nom" />
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input type="email" id="email" aria-label="Email" />
+        </div>
+        <div>
+          <label for="message">Votre message</label>
+          <textarea id="message" aria-label="Votre message"></textarea>
+        </div>
+        <button class="send-button" type="button" onclick="sendForm()" aria-label="Send">Envoyer</button>
+      </form>
+    </div>
+  </div>
+  <div id="lightbox-container" aria-hidden="true" role="listbox">
+    <div class="lightbox">
+      <div class="close-lightbox">
+        <img src="assets/icons/close_red.svg" alt="Close Contact form" onclick="closeLightbox()">
+      </div>
+      <div class="media-swap">
+        <em class="change-media fas fa-chevron-left" onclick="previousMedia()"></em>
+        <div class="media-box"></div>
+        <em class="change-media fas fa-chevron-right" onclick="nextMedia()"></em>
+      </div>
+    </div>
+  </div>
+  <script src="scripts/utils/contactForm.js"></script>
+  <script src="scripts/utils/lightBox.js"></script>
+  <script src="scripts/factories/profile.js"></script>
+  <script src="scripts/factories/media.js"></script>
+  <script src="scripts/pages/photographer.js"></script>
+</body>
+
 </html>

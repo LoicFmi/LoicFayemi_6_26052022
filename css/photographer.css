@@ -1,14 +1,208 @@
-#contact_modal {
-    display: none;
+main {
+    margin: 0 100px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #901C1C;
 }
 
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;
-    margin: 0 100px;
+    padding: 0 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 5px;
 }
 
-.contact_button {
+.photograph-header h2 {
+    color: #D3573C;
+    font-size: 64px;
+    font-weight: 400;
+    margin: 0;
+}
+
+.photograph-header h3 {
+    color: #901C1C;
+    font-size: 24px;
+    font-weight: 400;
+    margin-top: 15px;
+}
+
+.photograph-header h4 {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.photograph-header img {
+    border-radius: 50%;
+    object-fit: cover;
+    height: 200px;
+    width: 200px;
+    box-shadow: 0px 1px 5px #C4C4C4;
+}
+
+.photograph-sorting {
+    display: flex;
+    font-weight: 700;
+    margin-top: 9px;
+}
+
+.photograph-sorting p {
+    margin-right: 25px;
+}
+
+#sort-button {
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    padding: 11px;
+    margin-bottom: 58px;
+    width: 170px;
+    height: 60px;
+    border: none;
+    background-color: #911C1C;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#sort-button:hover,
+#sort-button:focus {
+    background-color: #DB8876;
+    color: black;
+}
+
+.sort-arrow {
+    padding: 0 2px 0 15px;
+}
+
+.sort-list {
+    position: absolute;
+    top: 400px;
+    z-index: 1;
+    font-size: 18px;
+    font-weight: 700;
+    color: white;
+    width: 170px;
+    border: none;
+    background-color: #911C1C;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.sort-list-item {
+    display: none;
+    align-items: center;
+    padding-left: 9px;
+    padding: 0 28px;
+    height: 60px;
+}
+
+.sort-list-item:hover,
+.sort-list-item:focus {
+    background-color: #DB8876;
+    color: black;
+}
+
+.list-arrow {
+    padding: 0 2px 0 20px;
+
+}
+
+#popularity {
+    border-radius: 5px 5px 0 0;
+}
+
+#popularity::after {
+    content: "";
+    position: absolute;
+    left: 17px;
+    top: 59px;
+    width: 80%;
+    border-bottom: 2px solid white;
+}
+
+#date::after {
+    content: "";
+    position: absolute;
+    left: 17px;
+    top: 119px;
+    width: 80%;
+    border-bottom: 2px solid white;
+}
+
+#title {
+    border-radius: 0 0 5px 5px;
+}
+
+.photograph-media {
+    display: flex;
+    justify-content: space-between;
+    row-gap: 30px;
+    column-gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 70px;
+}
+
+.photograph-media article {
+    width: 27%;
+    min-width: 300px;
+}
+
+.photograph-media-link {
+    cursor: pointer;
+}
+
+.photograph-media-content {
+    width: 100%;
+    height: 280px;
+    border-radius: 5px;
+    max-width: 100%;
+    object-fit: cover;
+}
+
+.photograpgh-media-infos {
+    display: flex;
+    justify-content: space-between;
+    color: #901C1C;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.photograpgh-media-infos p {
+    margin: 0;
+}
+
+.likes {
+    cursor: pointer;
+}
+
+.photograph-box {
+    width: 27%;
+    height: 65px;
+    background-color: #DB8876;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-around;
+    position: fixed;
+    left: 72%;
+    bottom: -1%;
+}
+
+.photograph-box p {
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.contact-button {
     font-size: 20px;
     font-weight: bold;
     color: white;
@@ -16,10 +210,33 @@
     width: 170px;
     height: 70px;
     border: none;
-    background-color: #901C1C;
+    background-color: #911C1C;
     border-radius: 5px;
     cursor: pointer;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
 }
+
+.contact-button:hover,
+.contact-button:focus {
+    background-color: #DB8876;
+    color: black;
+}
+
+
+#contact-modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: #C4C4C466;
+}
+
 
 .modal {
     border-radius: 5px;
@@ -30,12 +247,19 @@
     align-items: center;
     justify-content: space-between;
     padding: 35px;
-    margin: auto;
+    margin: 60px auto;
 }
 
 .modal header {
-    justify-content: space-between;
     width: 100%;
+    margin-bottom: 100px;
+    flex-direction: column;
+}
+
+.modal header div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
 
 .modal header img {
@@ -45,7 +269,7 @@
 .modal header h2 {
     font-size: 64px;
     font-weight: normal;
-    text-align: center;
+    margin: 0;
 }
 
 form {
@@ -68,9 +292,97 @@ form div {
     margin-bottom: 26px;
 }
 
-form input {
+form input,
+form textarea {
     width: 100%;
     height: 68px;
     border: none;
     border-radius: 5px;
+    font-size: 25px;
+}
+
+form textarea {
+    height: 190px;
+    resize: vertical;
+}
+
+.send-button {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    padding: 11px;
+    width: 170px;
+    height: 70px;
+    border: none;
+    background-color: #911C1C;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.send-button:hover,
+.send-button:focus {
+    background-color: #DB8876;
+    color: black;
+}
+
+#lightbox-container {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: #C4C4C466;
+}
+
+.lightbox {
+    border-radius: 5px;
+    background-color: white;
+    width: 45%;
+    margin: 60px auto;
+    padding: 0 10px;
+}
+
+.media-swap {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.change-media {
+    color: #901C1C;
+    font-size: 40px;
+    cursor: pointer;
+}
+
+.close-lightbox {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.close-lightbox img {
+    margin-right: 10px;
+    margin-top: 45px;
+    margin-bottom: -35px;
+    cursor: pointer;
+}
+
+.media-box {
+    width: 85%;
+}
+
+.lightbox-media {
+    width: 100%;
+    object-fit: cover;
+    height: 500px;
+    box-shadow: 5px 0px 5px #C4C4C4;
+}
+
+.media-box p {
+    margin: 10px 0;
+    color: #901C1C;
+    font-weight: 500;
+    font-size: 18px;
 }
