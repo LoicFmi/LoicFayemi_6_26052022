@@ -127,8 +127,8 @@ function addOneLike(clicked_id, clicked_likes) {
 
 // Affiche la liste de tri
 function displaySorting() {
-    sortButton.setAttribute('aria-hidden', 'true')
-    sortButton.setAttribute('aria-expanded', 'true')
+    sortButton.setAttribute('aria-hidden', 'true');
+    sortButton.setAttribute('aria-expanded', 'true');
 
     for (let i = 0; i < sortListItem.length; i++) {
         sortListItem[i].style.display = "flex"
@@ -139,8 +139,8 @@ function displaySorting() {
 
 // Masque la liste de tri
 function hideSorting() {
-    sortButton.setAttribute('aria-hidden', 'false')
-    sortButton.setAttribute('aria-expanded', 'false')
+    sortButton.setAttribute('aria-hidden', 'false');
+    sortButton.setAttribute('aria-expanded', 'false');
 
     for (let i = 0; i < sortListItem.length; i++) {
         sortListItem[i].style.display = "none"
