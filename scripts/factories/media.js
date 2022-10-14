@@ -26,13 +26,13 @@ class Photo {
 
     createMedia() {
         return `
-                <a class="photograph-media-link" href="#" role="button" onclick="displayLightbox(${this._id}, '${this._photographerName}', '${this._media}', '${this._title}')">
+                <a class="photograph-media-link" href="#" role="button" tabindex="0" onclick="displayLightbox(${this._id}, '${this._photographerName}', '${this._media}', '${this._title}'); return false">
                     <img id=${this._id} class="photograph-media-content" src='../assets/photographers/${this._photographerName}/${this._media}' alt= '${this._title}'>
                     </img>
                 </a>
                 <div class="photograpgh-media-infos">
                     <p>${this._title}</p>
-                    <p class="likes" onclick="addOneLike(${this._id}, ${this._likes})"><span class="likes-number ${this._id}">${this._likes}</span> <i class="fas fa-heart" role="button" tabindex="0"></i></p>
+                    <p class="likes"><span class="likes-number ${this._id}" tabindex="0">${this._likes}</span> <a class="fas fa-heart" href ="#" role="button" tabindex="0" onclick="addOneLike(${this._id}, ${this._likes}); return false"></a></p>
                 </div>`;
     }
 
@@ -52,7 +52,7 @@ class Video {
 
     createMedia() {
         return `
-                <a class="photograph-media-link" href="#" role="button" onclick="displayLightbox(${this._id}, '${this._photographerName}', '${this._media}', '${this._title}')">
+                <a class="photograph-media-link" href="#" role="button" tabindex="0" onclick="displayLightbox(${this._id}, '${this._photographerName}', '${this._media}', '${this._title}'); return false">
                     <video id=${this._id} class="photograph-media-content" alt='${this._title}'>
                         <source src='../assets/photographers/${this._photographerName}/${this._media}' type="video/mp4">
                         Your browser does not support the video tag.
@@ -60,7 +60,7 @@ class Video {
                 </a>
                 <div class="photograpgh-media-infos">
                     <p>${this._title}</p>
-                    <p class="likes" onclick="addOneLike(${this._id}, ${this._likes})"><span class="likes-number ${this._id}">${this._likes}</span> <i class="fas fa-heart" role="button" tabindex="0"></i></p>
+                    <p class="likes"><span class="likes-number ${this._id}" tabindex="0">${this._likes}</span> <a class="fas fa-heart" href="#" role="button" tabindex="0" onclick="addOneLike(${this._id}, ${this._likes}); return false"></a></p>
                 </div>`;
     }
 }

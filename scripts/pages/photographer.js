@@ -1,6 +1,13 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-undef */
 // Récupération des infos du photographe
+const sortButton = document.getElementById("sort-button");
+// const sortList = document.getElementsByClassName("sort-list");
+const sortListItem = document.getElementsByClassName("sort-list-item");
+const sortPopularity = document.getElementById("popularity");
+const sortDate = document.getElementById("date");
+const sortTitle = document.getElementById("title");
+// const likes = document.getElementsByClassName("likes");
+
+
 async function getPhotographers() {
 
     return fetch('../data/photographers.json')
@@ -98,7 +105,7 @@ function totalLikes() {
 
     let total = 0;
     let length = mediasLikes.length;
-    
+
     for (let i = 0; i < length; i++) {
         total = total + Number(mediasLikes[i].innerHTML);
     }
@@ -117,23 +124,21 @@ function addOneLike(clicked_id, clicked_likes) {
     totalLikes();
 }
 
-const sortButton = document.getElementById("sort-button");
-const sortListItem = document.getElementsByClassName("sort-list-item");
 
 // Affiche la liste de tri
 function displaySorting() {
-
     sortButton.setAttribute('aria-hidden', 'true')
     sortButton.setAttribute('aria-expanded', 'true')
 
     for (let i = 0; i < sortListItem.length; i++) {
         sortListItem[i].style.display = "flex"
     }
+
+    sortPopularity.focus();
 }
 
 // Masque la liste de tri
 function hideSorting() {
-
     sortButton.setAttribute('aria-hidden', 'false')
     sortButton.setAttribute('aria-expanded', 'false')
 
@@ -261,3 +266,24 @@ async function sortByTitle() {
     sortButtonTxt.textContent = "Titre";
 }
 
+// Gère l'accessibilité du système de tri
+sortPopularity.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') {
+        sortByPopularity();
+        hideSorting();
+    }
+})
+
+sortDate.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') {
+        sortByDate();
+        hideSorting();
+    }
+})
+
+sortTitle.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') {
+        sortByTitle();
+        hideSorting();
+    }
+})

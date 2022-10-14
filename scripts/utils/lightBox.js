@@ -1,6 +1,7 @@
-/* eslint-disable no-inner-declarations */
-/* eslint-disable no-prototype-builtins */
 /* eslint-disable no-unused-vars */
+const lightbox = document.getElementById("lightbox-container");
+let mediaId;
+
 // Récupération des infos du photographe
 async function getPhotographers() {
 
@@ -47,9 +48,6 @@ async function photographerName() {
     return photographer;
 }
 
-const lightbox = document.getElementById("lightbox-container");
-let mediaId;
-
 // Ouvre la lightbox et affiche le média qui a été cliqué
 async function displayLightbox(clicked_id, clicked_photograph, clicked_media, clicked_title) {
 
@@ -59,7 +57,6 @@ async function displayLightbox(clicked_id, clicked_photograph, clicked_media, cl
     const main = document.getElementById("main");
     const body = document.getElementById("body");
     const lightBox = document.getElementById("lightbox-container");
-    
 
     main.setAttribute('aria-hidden', 'true');
     lightBox.setAttribute('aria-hidden', 'false');
@@ -99,22 +96,20 @@ async function displayLightbox(clicked_id, clicked_photograph, clicked_media, cl
         return object.id == mediaId;
     });
 
+    lightBoxMedia.focus();
     i = mediaIndex;
 }
 
 // Ferme la lightbox
 function closeLightbox() {
-    lightbox.style.display = "none";
-
     const main = document.getElementById("main");
     const body = document.getElementById("body");
     const lightBox = document.getElementById("lightbox-container");
-    // const media = document.querySelector(".photograph-media-content");
-
+    
+    lightbox.style.display = "none";
     main.setAttribute('aria-hidden', 'false');
     lightBox.setAttribute('aria-hidden', 'true');
     body.style.overflow = 'auto';
-    // media.focus();
 }
 
 // Récupère les medias du photographe
@@ -134,6 +129,11 @@ async function mediasArray() {
 // Index du tableau des médias
 let i;
 
+// Récupère l'extension du média
+function getFileExtension(fileName) {
+    return fileName.split('.').pop();
+}
+
 // Affiche le média précédent dans la lightbox
 async function previousMedia() {
 
@@ -146,18 +146,15 @@ async function previousMedia() {
     if (i > 0) {
 
         i = i - 1;
-        if (mediaArray[i].hasOwnProperty('image')) {
+        
+        if(Object.prototype.hasOwnProperty.call(mediaArray[i], 'image')) {
             media = mediaArray[i].image;
-        } else if (mediaArray[i].hasOwnProperty('video')) {
+        } else if (Object.prototype.hasOwnProperty.call(mediaArray[i], 'video')) {
             media = mediaArray[i].video;
         }
 
         const mediaBox = document.querySelector(".media-box");
 
-        // Récupère l'extension du média
-        function getFileExtension(fileName) {
-            return fileName.split('.').pop();
-        }
         let ext = getFileExtension(media);
 
         if (ext == 'jpg' || ext == 'png' || ext == 'gif') {
@@ -180,6 +177,9 @@ async function previousMedia() {
             // console.log(error);
         }
     }
+    const lightBoxMedia = document.querySelector(".lightbox-media");
+    lightBoxMedia.focus();
+
 }
 
 // Affiche le média suivant dans la lightbox
@@ -196,18 +196,14 @@ async function nextMedia() {
 
         i = i + 1;
 
-        if (mediaArray[i].hasOwnProperty('image')) {
+        if(Object.prototype.hasOwnProperty.call(mediaArray[i], 'image')) {
             media = mediaArray[i].image;
-        } else if (mediaArray[i].hasOwnProperty('video')) {
+        } else if (Object.prototype.hasOwnProperty.call(mediaArray[i], 'video')) {
             media = mediaArray[i].video;
         }
 
         const mediaBox = document.querySelector(".media-box");
 
-        // Récupère l'extension du média
-        function getFileExtension(fileName) {
-            return fileName.split('.').pop();
-        }
         let ext = getFileExtension(media);
 
         if (ext == 'jpg' || ext == 'png' || ext == 'gif') {
@@ -230,10 +226,13 @@ async function nextMedia() {
             // console.log(error);
         }
     }
+    const lightBoxMedia = document.querySelector(".lightbox-media");
+    lightBoxMedia.focus();
 }
 
 
-document.addEventListener('keydown', function(e) {
+document.addEventListener('keydown', function (e) {
+
     if (e.key === 'Escape') {
         closeLightbox();
     }

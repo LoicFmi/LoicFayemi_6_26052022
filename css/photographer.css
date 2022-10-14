@@ -8,6 +8,11 @@ ul {
     padding: 0;
 }
 
+a {
+    text-decoration: none;
+    color: #901C1C;
+}
+
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;
