@@ -78,7 +78,7 @@ async function displayLightbox(clicked_id, clicked_photograph, clicked_media, cl
 
     } else if (ext == 'mp4') {
 
-        mediaBox.innerHTML = `<video id=${clicked_id} class="lightbox-media" alt='${clicked_title}' controls autoplay loop>
+        mediaBox.innerHTML = `<video id=${clicked_id} class="lightbox-media" aria-label='${clicked_title}' controls autoplay loop>
         <source src='../assets/photographers/${clicked_photograph}/${clicked_media}' type="video/mp4">
         Your browser does not support the video tag.
         </video>

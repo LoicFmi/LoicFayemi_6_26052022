@@ -52,7 +52,7 @@ class Video {
     createMedia() {
         return `
                 <a class="photograph-media-link" href="#" role="button" tabindex="0" onclick="displayLightbox(${this._id}, '${this._photographerName}', '${this._media}', '${this._title}'); return false">
-                    <video id=${this._id} class="photograph-media-content" alt='${this._title}'>
+                    <video id=${this._id} class="photograph-media-content" aria-label='${this._title}'>
                         <source src='../assets/photographers/${this._photographerName}/${this._media}' type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
